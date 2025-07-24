@@ -32,8 +32,6 @@ const ARCHIVOS = [
  "ayuda.html",
  "favicon.ico",
  "index.html",
- "archivos.html",
- "camara.html",
  "site.webmanifest",
  "css/dark-hc.css",
  "css/dark-mc.css",
