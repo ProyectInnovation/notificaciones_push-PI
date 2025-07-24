@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="light dark">
 
 <head>
+
+ <meta charset="UTF-8">
  <title>Notificaciones - Notificaciones Push</title>
 
  <script src="js/registraServiceWorker.js"></script>
@@ -28,12 +30,12 @@
 
  <menu style="display: flex; list-style: none; flex-wrap: wrap; gap: 0.5rem;">
   <li>
-   <button id="btnSuscribe" type="button" hidden onclick="suscribe()">
+   <button id="btnSuscribe" class="md-filled-button" type="button" hidden onclick="suscribe()">
     Suscríbete
    </button>
   </li>
   <li>
-   <button id="btnCancela" type="button" hidden onclick="cancela()">
+   <button id="btnCancela" class="md-outline-button" type="button" hidden onclick="cancela()">
     Cancela suscripción
    </button>
   </li>
