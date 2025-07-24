@@ -1,6 +1,6 @@
 FROM php:8.1-apache
 
-# Actualiza repos y paquetes esenciales para compilación + sqlite dev
+# Instala paquetes necesarios y extensiones
 RUN apt-get update && apt-get install -y \
     libsqlite3-dev \
     libzip-dev \
@@ -10,10 +10,16 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     && docker-php-ext-install pdo pdo_sqlite
 
-# Copia el proyecto
+# HABILITA mod_rewrite de Apache
+RUN a2enmod rewrite
+
+# PERMITE .htaccess modificando la configuración de Apache
+RUN sed -i 's/AllowOverride None/AllowOverride All/i' /etc/apache2/apache2.conf
+
+# Copia el código del proyecto
 COPY . /var/www/html/
 
-# Permisos
+# Asigna permisos adecuados
 RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
 
 EXPOSE 80
