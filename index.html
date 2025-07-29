@@ -122,7 +122,7 @@
     const mensaje = document.getElementById("mensaje").value;
     reporte.innerHTML =
      /* html */ `<progress max="100">Cargando&hellip;</progress>`
-    const render = await consumeJson("srv/notifica.php" + encodeURIComponent(mensaje));
+    const render = await consumeJson("srv/notifica.php?mensaje=" + encodeURIComponent(mensaje));
     await muestraObjeto(document, render.body)
    } catch (error) {
     muestraError(error)
