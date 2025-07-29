@@ -124,6 +124,9 @@
      /* html */ `<progress max="100">Cargando&hellip;</progress>`
     const render = await consumeJson("srv/notifica.php?mensaje=" + encodeURIComponent(mensaje));
     await muestraObjeto(document, render.body)
+
+    document.getElementById('mensaje').value="";
+
    } catch (error) {
     muestraError(error)
    }
