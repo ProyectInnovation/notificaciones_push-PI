@@ -22,7 +22,7 @@ const AUTH = [
 ejecutaServicio(function () {
 
  $webPush = new WebPush(AUTH);
- $mensaje = "Hola! 👋";
+ $mensaje = $_GET['mensaje'] ?? '';
 
  // Envia el mensaje a todas las suscripciones.
 

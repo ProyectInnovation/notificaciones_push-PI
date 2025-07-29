@@ -26,7 +26,7 @@
   <h1>Notificaciones Push</h1>
  </md-top-app-bar>
 
-    <nav-tab-fixed id="tab"></nav-tab-fixed>
+    <nav-tab-fixed id="navtabfixed"></nav-tab-fixed>
 
  <menu style="display: flex; list-style: none; flex-wrap: wrap; gap: 0.5rem;">
   <li>
@@ -54,6 +54,13 @@
   <output id="outEstado" style="width: 90%;">
    <progress max="100">Cargando&hellip;</progress>
   </output>
+ </p>
+
+ <p>
+   <label class="md-filled-text-field">
+    <textarea id="mensaje" rows="3" placeholder="Mensaje"></textarea>
+    <span>Escribe el mensaje que quieras enviar....</span>
+   </label>
  </p>
 
  <fieldset>
@@ -112,9 +119,10 @@
 
   async function notificaDesdeElServidor() {
    try {
+    const mensaje = document.getElementById("mensaje").value;
     reporte.innerHTML =
      /* html */ `<progress max="100">Cargando&hellip;</progress>`
-    const render = await consumeJson("srv/notifica.php")
+    const render = await consumeJson("srv/notifica.php" + encodeURIComponent(mensaje));
     await muestraObjeto(document, render.body)
    } catch (error) {
     muestraError(error)
